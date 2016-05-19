@@ -235,6 +235,8 @@ The abstract keyword cannot be combined with the static or private or final keyw
 
 #### What is an interface and how is it different from an abstract class?
 
+Interface is a Java non-primitive type which is used to define abstract methods.
+
 
 
 
