@@ -236,6 +236,122 @@ The abstract keyword cannot be combined with the static or private or final keyw
 #### What is an interface and how is it different from an abstract class?
 
 Interface is a Java non-primitive type which is used to define abstract methods.
+By default interface itself is abstract.
+In an interface we can declare only static final data members.
+In an interface body we can only declare abstract methods. Compiler does not allow declaring concrete methods in interface.
+Interface does not have a constructor. Because purpose of a constructor is to initialize the data members, and since all data members in an interface are static final, we have to initialize them at the time of declaration. Due to this reason, there are no data members for the constructor to initialize, hence there is no need for a constructor in interface.
+Default access in an interface is public.
+Methods of an interface must be implemented by an implementing class.
+The class which provides implementation to the interface methods is knows an implementation class.
+If the implementation class does not provide implementation for all the methods of an interface, then the class should be declared as abstract class.
+A class can implement an interface by using implements keyword.
+A class can implement any number of interfaces.
+An interface can inherit form another interface using extends keyword, but it cannot inherit from a class using inherits keyword.
+We can declare a reference variable of interface type but  we cannot create an object of interface type.
+For a reference variable of interface type, we can either assign a null or an instance of an implementation class or instance of sub-classes of implementation class.
+
+Difference between interface and abstract class:
+1. Interface is used for pure abstraction. Whereas abstract classes are used for partial abstraction.
+2. Interface can only have abstract methods and static final data members. Whereas abstract class can have abstract as well as concrete methods and non-static data members.
+3. Interface does not have a constructor. Whereas abstract classes have constructor. Both interface and abstrace class cannot be instantiated.
+4. Interface is implemented by implementation class. Whereas abstract class is extended by non-abstract class.
+5. A class can implement multiple interfaces. Whereas a class can only extend one abstract class.
+6. Interfaces facilitate multiple inheritance. Whereas abstract classes do not facilitate multiple inheritance.
+
+
+#### What is abstraction and how to achieve it?
+
+Abstraction is the process of hiding the implementation of a class and providing an public interface to use essential functionality.
+Using abstraction, an objects functionality is hidden from usage of the object.
+An interface is provided to use the essential functionality of the object without showing its implementation.
+
+There are three essenstial steps to achieve abstraction in Java:
+
+1. Define the interface: Define the essential functionality of an object in an public interface.
+2. Define the implementation class: Provide implementation for all functionality of an object, as per requirement or specification, in an implementation class.
+3. Upcasting: Refer to the essential functionality of the object using reference variable of interface type.
+
+Advantages of using interface:
+
+1. Hiding the implementation.
+2. Any changes made in thte implementation will not impact the usage of application.
+3. The functioning of application is not dependent on a concrete class. Instead it depends on an interface type and any concrete class implementing the interace is acceptable to make the application functional. This is also known as Loose coupling.
+
+For example, we use a smartphone. Essential functionality of the smartphone is shown to the user in an interface displayed on the screen. But complete implementation is hidden inside the casing. The user does not need to know the implementation in order to use the smartphone functionality and complete the task he is trying to accomplish.
+
+Example of tight and loose coupling:
+
+A user object wants to commute from his home to office. Now, in the first case, the implementation class of this user object is using a concrete method move() implemented in a concrete class Car to help himself commute from one place to another. Due to some reason, this car object is in a bad state and is not working, or is not available. Now, since the car object's functionality is not available, the user object cannot commute. This kind of coupling between objects is called tight coupling.
+
+In a second case, the implementation class of user object is using an abstract method move() declared in an abstract interface Vehicle and implemented in many implementation classes such as Car, Bike, Bus etc to help him commute from one place to another. Here, the user object will accept any type of concrete Vehicle type, be it a Car, or a bike, or a bus, or any other vehicle type. Even if the car object is not available, the user object will still accept other concrete vehicle type objects to help him commute. The functionality of user object is not dependent entirely on a particular concrete Car object. This kind of coupling is called Loose coupling.
+
+
+#### What is encapsulation?
+
+Wrapping the data members and member methods together as a single unit in a class is knows as encapsulaition.
+In encapsulation, the data members of one class will be hidden from other classes and can be accessed only through the member methods of their current class. This is also knows as data hiding.
+
+To achieve encapsulation:
+
+1. Declare the data members with private access specifier.
+2. Provide public getter and setters to modift and view the data members.
+
+Advantages of encapsulation:
+
+1. The feilds of a class can be made read-only or write-only.
+2. The class can have total control over what is stored in its feilds.
+3. The users of a class do not know how the class is storing its data. A class can change the data type of a feild and users of the class will not have to change any of their code to adapt to the changes in class implementation.
+
+
+#### What is Java Bean class?
+
+Java Bean is a class that follows the following conventions:
+
+1. The class has a public default constructor with no arguments.
+2. The class properties are accessibe using getters (or accessor methods) and setters (or mutator methods), which are declared according to the standard naming convention.
+3. The class is serializable, that is, it implements serializable interface. This allows applications to reliably save, store and restore 
+
+
+#### What is Singleton class?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
