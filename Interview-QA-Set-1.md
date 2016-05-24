@@ -1,33 +1,35 @@
 # Interview QA Set-1
 
 
-#### What is Class and Object?
+#### What is a Class and an Object?
 
-Class is a template or blueprint used to define an object in Java.
-Class contains elements like methods, variables, blocks and subclasses.
+Class is a template or a blueprint used to define an object in Java. In other words, class is the logical entity that defines an object.
+A class contains elements like methods, variables, blocks and subclasses.
 
-Class members can be classified into two types: Static and Non-static.
+Class members can be classified into two types: static members and non-static members.
 
-Non-static variables represent the state of an object.
-And non-static methods represent the behavior of an object.
+Non-static data members represent the state of an object.
+And non-static member methods represent the behavior of an object.
 
-Object is a physical entity with properties and behaviour.
-Object is the physical existance of a class whereas class is the logical entity that defines an object.
+Object is the physical existance of a class.
+Object is a physical entity which has properties and behaviour.
 
 
-#### What is a Constructor and why is it required?
+#### What is a Constructor and Why is it required?
 
-Constructor is that member of a class which is used to initialize data members of the class it is declared in.
-Every class should provide a constructor to initialize data members of the class.
+Constructor is member of class and its purpose is to initialize the data members of the class.
+Every class should provide a constructor to initialize data members of that class.
 
-Constructors alone cannot create the object of a class, they are used only for initializing the data members of a class. For createtion of an object firstly, the memory allocation for the data members is done by the new keyword, following which the initilization of the data members is done by constructor.
+Constructors alone are not sufficient to create the object of any class. They are used only for initializing the data members of the class.
 
-Constructors can be defined either by user or by compiler.
+For object creation, first the memory allocation for the data members is done by the new keyword, following which the initilization of the data members is done by the constructor.
 
-Constructor defined by compiler is known as default constructor.
-Default constructor is always a no-argument constructor.
+Constructors can be defined either implicitly by the compiler or explicitly by the programmer.
 
-Whereas a constructor defined by user is known as user defined constructor.
+A constructor defined by the compiler is known as the default constructor.
+The default constructor is always a no-argument constructor.
+
+Whereas a constructor defined by the programmer is known as a user defined constructor.
 When data members of a class have to be compulsorily initialized then we must define a user-defined constructor.
 
 A user defined constructor can be of two types:
@@ -35,76 +37,79 @@ A user defined constructor can be of two types:
 1. No-argument constructor
 2. Paramaterized constructor
 
-Defining a constructor with parameter types is known as parameterized constructor.
-We can define any number of parameters.
+Defining a constructor with one or more parameters is known as parameterized constructor.
+A constructor can have any number of parameters.
 
-If a class is having user defined constructor, then the compiler will not define the default constructor.
+If the programmer defines a user defined constructor for a class, then the compiler will not define the default constructor.
 
-In a class, either the default constructor or a user defined constructor should exist.
+In every class, either the default constructor or a user defined constructor must exist.
 
-The name of constructor is always same as the name of class in which it is declared so as to allow JVM to easily identify which class members are to be initialized when a constructor is executed.
+The name of a constructor is always declared the same as the name of the class in which it is declared. This is done to allow JVM to easily identify which class members to initialize when a constructor is executed.
 
-We must not specify a return value for a constructor because when a constructor is executed, it implicitly returns something to the new keyword. Developer must not explicitly specify a return type and value for a constructor, not even void.
+Programmer must not specify a return value for a constructor because when a constructor is executed, it returns something to the new keyword implicitly. Programmer must not specify a return type and value for any constructor explicitly, not even void.
+
 
 #### What is constructor overloading?
 
-In a class, defining multiple constructors with different parameter types is known as constructor overloaidng.
+Defining multiple constructors with different parameter types in a class is known as constructor overloaidng.
 
-The parameters should differ either in type of parameter or the length of parameters.
+The parameters should differ either in type or in length.
 
-When calling the constructor, JVM calls the corresponding constructor based on parameters at compile time.
+Based on the arguments passed to the constructor in a constructor call, the compiler identifies which constructor body to execute during compile time.
 
 With constructor overloading, we can create objects of class with different initilization.
 
 
 #### Can we override constructors?
 
-No, we cannot override constructors because every class has its own constructor and constructor of a superclass is not inherited by subclass during inheritance. Hence, we can only overload constructor within a class but can never override them.
+No, we cannot override constructors because every class has its own constructor and constructors of a class are not inherited by its subclass during inheritance. Hence, we can only overload constructors within a class but can never override them using inheritance.
 
 
-#### What is the difference betweeb this and super keyword?
+#### What is the difference between this and super keyword?
 
 This keyword in Java stores the address of the current object under operation.
-Using this keywork, we refer to the members of current object.
-Whenever we invoke a method on an object reference variable, such as d1.display();, the value of this keyword will be updated to the value stored by d1 reference variable.
-In-fact, the compiler automatically adds this keyword to all non-local variable references as long as there is no conflict of scope in non-local variables and local variables. If there is a conflict of scope between non-local variables and local variables, it is upto the programmer to use this keyword to refer to the non-local variable wherever required.
+Using this keywork, we can refer to the members of current object.
 
-Whereas, with super keyword we can access the members of superclass from its subclass.
+Whenever we invoke a method on an object reference variable, such as d1.display(), the value of this keyword will be updated to the value stored by d1 reference variable. Now, the value stored in this keyword will be used by JVM to complete the execution of the method call.
+
+In-fact, the compiler automatically adds this keyword to all non-local variable references as long as there is no conflict of scope in non-local variables and local variables. If there is a conflict of scope between non-local variables and local variables, preference is always given to the local variables. And it is upto the programmer to use this keyword to refer to non-local members where ever required.
+
+Whereas, with super keyword we can refer to the members of a class from its subclass.
 
 
 #### What is constructor chaining?
 
-Constructor chaining is a phenomenon which happens during inheritence, where a subclass constructor makes a call to its superclass constructor, which further makes a call to its respective superclass constructor until finally when the Object class constructor is called.
+Constructor chaining is a phenomenon which happens during inheritence, when a class constructor makes a call to its superclass constructor, which further makes a call to its respective superclass constructor until finally when the Object class constructor is called.
 
 Constructor chaining can be done either implictily by the compiler or expilictly by the programmer.
-Whenever user-defined parameterized constructors are present in the chain, explicit constructor chaining must be done because while implicit constructor chaining the compiler will only call non-parameterized constructor. It will never call parameterized constructors.
+
+Whenever user-defined parameterized constructors are present in a chain of constructors, explicit constructor chaining must be done because while implicit constructor chaining the compiler will only call non-parameterized constructors of superclasses. It will never call parameterized constructors. So, if there is a class with only parameterized constructor, compiler will fail to initialize its data members and the program will terminate.
 
 
 #### What is the usage of this() and super() statements?
 
 this() statement in Java is used to call the no-argument or parameterized constructors of the class in operation.
-Whereas super() statement is used to call the no-argument or parameterized constructors of superclass from its subclass.
+Whereas super() statement is used to call the no-argument or parameterized constructors of a class from its subclass.
 
-super() or this() can be used only in constructor body and whenever used, it should be the first statement of the constructor body.
-One costructor body can only have either super() statement or this() statement.
-Also, there can be only one super() statement in one constructor body. Using multiple super() statements is not allowed in Java.
+Both super() and this() statements can only be used in a constructor body. Whenever used, they should be the first statement of the constructor body.
+One constructor body can only have either one super() statement or one this() statement. Both super() statement and this() statement cannot be used together in one constructor body. Also, using multiple super() statements or multiple this() statements is not allowed in Java.
 
-The subclass constructor can either make a implicit call or an explicit call to the superclass constructor.
-Implicit call is made by compiler whereas explicit call is made by programmer.
+A class constructor can either make a implicit call or an explicit call to its superclass constructor.
+Implicit call is made implicitly by the compiler whereas explicit call is made explicitly by the programmer.
 
-Implicit calls happens only when the superclass has a no-argument constructor.
+Implicit call is possible only when the superclass has a no-argument constructor.
 
 
 #### What is inheritance and what are its types?
 
 A class inheriting members of another class is known as inheritace.
-One class can inherit members of another class using extends keyword.
+One class can inherit the members of another class using extends keyword.
 The class from which members are inherited is called superclass.
-The class to which members are inherited is called subclass.
+And the class to which members are inherited is called subclass.
 
 Only non-static members are inherited from superclass to subclass.
-If superclass has static or private members, then such members will not be inherited to the subclass.
-Also, the constructor of superclass will not be inherited by the subclass.
+If a class has static or private members, then such members will not be inherited to its subclass.
+Also, the constructor of a class will not be inherited by its subclass.
 
 With inheritance, we can achieve:
 
@@ -121,116 +126,125 @@ There are 4 types of inheritance:
 
 ###### Single inheritance
 
-In this type of inheritance, the subclass inherits from only one superclass.
+In this type of inheritance, one class is inherited by only one subclass.
 
 ###### Multi-level inheritance
 
-In this type of inheritance, a subclass inherites from its superclass, which further inherits from its own superclass and so on.
-In this type of inheritance, a class acts as both a subclass as well as a superclass.
+In this type of inheritance, one class is inherited by a subclass, which is further inherited by another subclass and so on.
+In this type of inheritance, at least one class acts as both subclass as well as superclass.
 
 ###### Multiple inheritance
 
-In this type of inheritance, one subclass inherits from more than one superclass.
-This type of inheritance is not supported in Java.
+In this type of inheritance, one class inherits from more than one superclass.
+This type of class inheritance is supported by Object Oriented Programming but it is not supported by Java.
 
 ###### Hierarchial inheritance
 
-In this type of inheritance, a superclass has more than one subclass.
-This type of inheritance is used to achieve generalization.
-All subclasses have the common properties of superclass.
+In this type of inheritance, one class is inherited by more than one subclass.
+This type of inheritance is used to achieve generalization in Java.
+All subclasses have the common properties of the superclass.
 
 
-#### Why Java doesn't support multiple inheritance?
+#### Why does Java not support multiple inheritance?
 
-Java doesn't support multiple inheritence because, there can be only one super() statement in one constructor body. Hence, it is not possible to initialize two superclasses from one subclass.
-Also, it leads to the Diamond problem, which says, if a subclass extends two or more superclasses and two or more superclasses have a method with same name but different implementation, there is an ambiguity as to which implementation will be inherited by the superclass. That is why JVM allows programmer to write only one super() statement in one constructor body.
+Java does not support multiple inheritence because, in Java, declatation of only one super() statement is allowed in one constructor body. Hence, it is not possible to initialize more than one superclass members from any class constructor.
+
+Also, multiple inheritance leads to the Diamond problem, which says, if a class extends more than one superclass and at least two of those superclasses have a method declaration with same name but different implementation definition, then there is an ambiguity as to which implementation will be inherited by the subclass. This is why JVM allows only one super() statement call from one constructor body, effectively restricting programmer from getting trapped into the Diamond problem.
 
 
 #### What is HAS-A and IS-A relationship?
 
-Two classes are said to have HAS-A relation (or, Object Composition relation) when instance of one class belongs to (or, is the member of) the other class.
+Two classes are said to have HAS-A relationship (or Aggregation relationship) when instance of one class belongs to (or, is the member of) another class.
 
-If one class is composed of or is made of the instance of the other class, then this type of HAS-A relation is called Composition. For example, Car class HAS-A Object Composition relation with Wheel class.
-Object Composition relation between two classes is represented on a UML diagram with black colored diamond pointed from contained class to the containing class.
+If one class can have (or possess) one instance or multiple instances another class, then this type of HAS-A relation between the two classes is known as Aggregation relationship. For example, a Pond may or may not have Ducks. Therefore, the Pond class is in Aggregation relationship with the Duck class.
+Aggregation relationship between two classes is represented on a UML diagram with hollow diamond pointed from possessed class to the possessing class.
 
-Whereas, if one class can have or possess the instance or multiple instances of the other class, then this type of HAS-A relation is called Aggregation relation. For example, a Pond class may or may not contain Duck class instances.
-Aggregation relation between two classes is represented on a UML diagram with hollow diamond pointed from possessed class to the possessing class.
+Whereas if one class is composed of (or, is made of) the instance of another class and cannot exist without the other class, then this type of HAS-A relation between the two classes is called Composition relationship. For example, a car is composed of wheels, car cannot exist without wheels. Therefore, the Car class is in Composition relationship with the Wheel class.
+Composition relationship between two classes is represented on a UML diagram with black colored diamond pointed from contained class to the containing class.
 
-Two classes are said to have IS-A relation (or, Inheritance relation) when one class extends the other class (or, one class IS-A extension of the other class. Or, one class inherits non-static properties from the other class).
+Composition is a special case of Aggregation.
+
+Two classes are said to have IS-A relationship (or Inheritance relationship) when one class extends the other class (or, one class IS-A extension of the other class. Or, one class inherits non-static properties from the other class).
+
 Two interfaces are said to have IS-A relation when one interface extends the other interface.
-A class is said to have IS-A relation with an interface when that class implements that interface.
-We can identify IS-A relation or Inheritence relation easily by looking for extends keyword or implemets keyword.
-For example, Car is a Vehicle, so we can say Car class has IS-A relation with the Vehicle class.
-IS-A relation between two classes is represented on a UML diagram with a black colored arrow pointed from the extending class to extended class, or with a hollow arrow from implemeting class to the implemented interface.
 
-Both, IS-A relation (Inheritence relation) and HAS-A relation (Object Composition relation) are used to achieve code reusability.
-IS-A relaition differs from HAS-A relation in following ways:
+A class is said to have IS-A relationship with an interface when that class implements that interface.
 
-1. It is easier to change the class implementing Composition than the class implementing Inheritance, because the change of a superclass impacts the inheritance hierarchy to subclasses.
-2. It is not possible to subclass a method with same signature as declared in the superclass but with a different return type. Whereas, the same is possible in a Composition relation. Composition allows programmer to change the interface of a front-end class without affecting the back-end classes.
-3. Composition is dynamic binding (run time binding) while Inheritance is static binding (compile time binding).
-4. It is easier to add new subclasses than it is to add new front-end classes, because Inheritance comes with polymorphism. if you have a code that relies on a superclass interface, that code can work with a new subclass without change. Whereas this is not true for Composition, unless composition is used with interfaces.
+We can identify IS-A relationship (or Inheritence relationship) easily by looking for extends keyword or implemets keyword.
 
-Inheritance should not be used just to get code reuse. If all that is really required is code reuse, Composition should be used.
-Inheritance should not be used just to get polymorphism. If there is no nautral IS-A relationship, use Composition with interfaces.
+For example, Car is a Vehicle, so we can say Car class has IS-A relationship with the Vehicle class.
+
+IS-A relation between two classes is represented on a UML diagram with a black colored arrow pointed from the extending class to extended class, or from the extending interface to the extended interface, or with a hollow arrow from implemeting class to the implemented interface.
+
+Both, IS-A relationship (Inheritence relationship) and HAS-A relationship (Aggregation relationship) are used to achieve code reusability.
+
+IS-A relaitionship differs from HAS-A relationship in the following ways:
+
+1. It is easier to change the class implementing HAS-A relationship than the class implementing IS-A relationship, because the change of a superclass impacts the inheritance hierarchy to subclasses.
+2. It is not possible to declare a method in subclass with same signature as declared in the superclass but with a different return type. Whereas, the same is possible in a HAS-A relationship. HAS-A relationship allows the programmer to change the interface of a front-end class without affecting the back-end classes.
+3. HAS-A relationship is dynamic binding (run time binding) while IS-A relationship is static binding (compile time binding).
+4. It is easier to add new subclasses than it is to add new front-end classes, because IS-A relationship comes with polymorphism. If you have a code that relies on a superclass interface, that code can work with a new subclass without change. Whereas the same is not true for HAS-A relationship, unless HAS-A relationship is used with interfaces.
+
+IS-A relationship should not be used just to get code reuse. If all that is really required is code reuse, then HAS-A relationship should be used.
+IS-A relationship should not be used just to get polymorphism. If there is no nautral IS-A relationship, then use HAS-A relationship with interfaces.
 
 
 #### What is method overloading? Can main() method be overloaded?
 
-In a class, defining multiple methods with same name but different parmeters is called method overloading.
-The parameters should differ either in terms of parameter type or in terms of parameter length or both.
+Defining multiple methods in a class with same name but different parmeters is called method overloading.
+The parameters should differ either in the terms of parameter type or in the terms of parameter length or both.
 
 In a class, we can overload both static and non-static methods.
-Overloaded methods are invoked based on the parameters.
+A method call is binded to a method definition based on the arguments passed by programmer in the method call.
 
-Superclass methods can be overloaded in the subclass.
+Class methods can also be overloaded in its subclass.
 
 Method overloading is used to achieve compile time polymorphism.
 
 While developing applications, if we come accross an operation that should be performed with different parameters and parameter types, then we must use method overloading.
 For example, logging in to Facebook using phone number, or email or username.
 
-Yes, main() method can be overloaded but the only version of main() method that JVM will look for starting execution of a class is:
+Yes, main() method can be overloaded but the only version of main() method that JVM will look to start execution of a class is:
 public static void main(String[] args){...}
 
 
 #### What is method overriding? Explain?
 
-Inheriting a method from the superclass and changing its implementation in the subclass according to the subclass specification is called Method overriding.
+Inheriting a method from a class and changing its implementation in the subclass according to the subclass specification is called Method overriding.
 Method overriding can be done only in a subclass.
-When overriding a method, the subclass should retain the signature of method from the superclass and must provide a different implementation body.
+When overriding a method, the subclass should retain the signature of method from the superclass and must only provide a different implementation body.
 
-Whenever we create a subclass object that is having a overridden method, then the object is said to use method overriding.
+Whenever we create a subclass object that has an overridden method, then the object is said to use method overriding.
 
-Subclass cannot override the follwing methods:
+A subclass cannot override the follwing methods:
 
-1. Static methods, because static methods cannot be inherited.
-2. Private methods, because scope of private methods is limited to the class in which they are decalred. Private method are not accessible outside the class, not even to the subclasses. So private methods are not inherited and hence cannot be overloaded.
-3. Final methods, because any method marked final cannot be re-implemented. Final keyword restricts changing the method implementation. However final methods can be inherited to subclasses.
+1. Static methods, because static methods cannot be inherited to a subclass.
+2. Private methods, because scope of private methods is limited to the class in which they are decalred. Private method are not accessible outside the class, not even to the subclasses. So private methods are not inherited and hence cannot be overloaded in a subclass.
+3. Final methods, because any method marked final cannot be re-implemented. Final keyword restricts changing implementation of the final method. However final methods can be inherited to subclasses.
 
 Method overriding is used to achieve runtime polymorphism.
 
 While developing an application whenever we come accross a functionality where the implementation needs to be changed, then we use method overriding.
 
-A subclass can override as well as overload the superclass methods.
+A class can override as well as overload its superclass methods.
 
 
 #### What do you mean by final class?
 
-A class declared using final keyword is called final class. The final keyword restricts a class from being inherited.
+A class that is declared using the final keyword is known as final class. The final keyword restricts a class from being inherited.
 
-If a developer tries to inherit a final class, the compiler will successfully compile the code but "java.lang.VerifyError" exception will be thrown at runtime.
+If a developer tries to inherit a final class, the compiler will successfully compile the code but JVM will throw "java.lang.VerifyError" exception at runtime.
 
 
 #### What is an abstract class?
 
-A class declared using abstract keyword is called abstract class. The abstract keyword allows a class to have abstract methods. However, it is not enforced upon the developer. An abstract class can also have none to all methods as concrete methods. But even if one method in the class is abstract, it is mandatory to declare the class using abstract keyword because a non-abstract class cannot have abstract methods.
+A class declared using abstract keyword is known as abstract class. The abstract keyword allows a class to have abstract methods. However, abstraction is not enforced on the abstract class. An abstract class can also have all methods as concrete methods. But even if there is one abstract method in the class then it is mandatory to declare the class as abstract, because non-abstract classes cannot have abstract methods.
 
-An abstract class also has a constructor. But still, an abstract class cannot be instantiated using the new keyword because there may be some abstract methods which do not have implementation in the abstract class. Hence, compiler does not allow making instance of any class declared using abstract keyword.
+An abstract class also has a constructor. Even then, an abstract class cannot be instantiated using the new keyword. This is because there may be some abstract methods which do not have implementation in the abstract class due to which it is not possible to instantiate the abstract class. Hence, compiler does not allow making instance of any class declared using abstract keyword.
 
-Abstract class is not a pure abstract body as it can have concrete methods too. Hence, if a complete abstract body is required, developer should use interfaces.
+Abstract class is not a pure abstract body as it can have concrete methods too. If a complete abstract body is required, programmer should use interfaces.
 
-The abstract keyword cannot be combined with the static or private or final keywords as they all restrict providing concrete implementation to the abstract methods in a class.
+The abstract keyword cannot be combined with the static, private or final keyword as all of them restrict providing a concrete implementation to the abstract methods in a subclass.
 
 
 #### What is an interface and how is it different from an abstract class?
@@ -239,43 +253,42 @@ Interface is a Java non-primitive type which is used to define abstract methods.
 By default interface itself is abstract.
 In an interface we can declare only static final data members.
 In an interface body we can only declare abstract methods. Compiler does not allow declaring concrete methods in interface.
-Interface does not have a constructor. Because purpose of a constructor is to initialize the data members, and since all data members in an interface are static final, we have to initialize them at the time of declaration. Due to this reason, there are no data members for the constructor to initialize, hence there is no need for a constructor in interface.
+Interface does not have a constructor, because the purpose of a constructor is to initialize the data members, and since all data members in an interface are static final, we have to initialize them at the time of declaration. Since there are no data members for the constructor to initialize, hence there is no need for a constructor in an interface.
 Default access in an interface is public.
 Methods of an interface must be implemented by an implementing class.
 The class which provides implementation to the interface methods is knows an implementation class.
 If the implementation class does not provide implementation for all the methods of an interface, then the class should be declared as abstract class.
-A class can implement an interface by using implements keyword.
-A class can implement any number of interfaces.
+Any class can implement any interface by using implements keyword.
+One class can implement any number of interfaces.
 An interface can inherit form another interface using extends keyword, but it cannot inherit from a class using inherits keyword.
 We can declare a reference variable of interface type but  we cannot create an object of interface type.
-For a reference variable of interface type, we can either assign a null or an instance of an implementation class or instance of subclasses of implementation class.
+For a reference variable of interface type, we can either assign a null or an instance of an implementation class or an instance of subclasses of the implementation class.
 
-Difference between interface and abstract class:
+Difference between an interface and an abstract class:
 1. Interface is used for pure abstraction. Whereas abstract classes are used for partial abstraction.
 2. Interface can only have abstract methods and static final data members. Whereas abstract class can have abstract as well as concrete methods and non-static data members.
-3. Interface does not have a constructor. Whereas abstract classes have constructor. Both interface and abstrace class cannot be instantiated.
-4. Interface is implemented by implementation class. Whereas abstract class is extended by non-abstract class.
-5. A class can implement multiple interfaces. Whereas a class can only extend one abstract class.
+3. Interface does not have a constructor. Whereas abstract classes have constructor. However, both interface and abstrace class cannot be instantiated.
+4. Interface is implemented by an implementation class. Whereas abstract class is extended by an abstract or non-abstract class.
+5. One class can implement multiple interfaces. Whereas one class can extend only one abstract class.
 6. Interfaces facilitate multiple inheritance. Whereas abstract classes do not facilitate multiple inheritance.
 
 
 #### What is abstraction and how to achieve it?
 
-Abstraction is the process of hiding the implementation of a class and providing an public interface to use essential functionality.
-Using abstraction, an objects functionality is hidden from usage of the object.
-An interface is provided to use the essential functionality of the object without showing its implementation.
+Abstraction is the process of hiding the implementation of a class and providing an public interface to use essential functionality of the class from an interface type reference variable.
+Using abstraction, an objects functionality is hidden its usage.
 
 There are three essenstial steps to achieve abstraction in Java:
 
-1. Define the interface: Define the essential functionality of an object in an public interface.
-2. Define the implementation class: Provide implementation for all functionality of an object, as per requirement or specification, in an implementation class.
+1. Define an interface: Define the essential functionality of an object in a public interface.
+2. Define an implementation class: Provide implementation for all functionality of an object, as per requirement or specification, in an implementation class that implements the interface.
 3. Upcasting: Refer to the essential functionality of the object using reference variable of interface type.
 
 Advantages of using interface:
 
-1. Hiding the implementation.
-2. Any changes made in thte implementation will not impact the usage of application.
-3. The functioning of application is not dependent on a concrete class. Instead it depends on an interface type and any concrete class implementing the interace is acceptable to make the application functional. This is also known as Loose coupling.
+1. Hiding the implementation without restricting usability.
+2. Any changes made in thte implementation class will not impact the usage of application.
+3. Functioning of the application is not dependent on any concrete class. Instead it depends on an interface type and any concrete class that implements the interace is acceptable to make the application functional. This is also known as Loose coupling.
 
 For example, we use a smartphone. Essential functionality of the smartphone is shown to the user in an interface displayed on the screen. But complete implementation is hidden inside the casing. The user does not need to know the implementation in order to use the smartphone functionality and complete the task he is trying to accomplish.
 
