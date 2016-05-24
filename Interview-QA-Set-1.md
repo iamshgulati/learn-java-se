@@ -322,12 +322,12 @@ Java Bean is a class that follows the following conventions:
 
 1. The class has a public default constructor with no arguments.
 2. The class properties are accessibe using getters (or accessor methods) and setters (or mutator methods), which are declared according to the standard naming convention.
-3. The class is serializable, that is, it implements serializable interface. This allows applications to reliably save, store and restore 
+3. The class is serializable, that is, it implements serializable interface. This allows applications to reliably save, store and restore the beans state in a manner independent of the virtual machine and of the platform. 
 
 
 #### What is Singleton class?
 
-A class for which the instantantion has been restricted to just one object is called Singleton class. Singleon class pattern is useful when exactly one object of a particular class is needed to coordinate actions accross the system.
+A class for which the instantantion has been restricted to just one object is called Singleton class. Singleon class design pattern is useful when exactly one object of a particular class is needed to coordinate actions accross the system.
 For example, for one program, only one database connction is required. Hence, we need only one object to provide the database connection through out the application.
 
 Singleton class implementation is done using:
@@ -338,30 +338,30 @@ Singleton class implementation is done using:
 4. Necessary logic which restricts the creation of more than one object
 
 
-#### What are different access specifiers in Java? Explain.
+#### What are the different access specifiers in Java? Explain.
 
-Access specifiers in Java: private, package level (default), protected, public
+Access specifiers in Java are: private, package level (default), protected, public
 
-1. Private: private access specifier restricts access to class level
-2. Package level: package level (or default) access specifier restricts access to package level
-3. Protected: protected access specifier restricts access to package level but members of the class can be accessed outside by using inheritance
-4. Public: public access specifier allows members to be accessed from anywhere
+1. Private: private access specifier restricts access of members to the class level
+2. Package level: package level (or default) access specifier restricts access of members and classes to the package level
+3. Protected: protected access specifier restricts access of members to package level but members can also be accessed outside by using inheritance
+4. Public: public access specifier allows members and classes to be accessed from anywhere
 
 Members of class can be declared with any of the four access specifiers. But the same is not true for all the classes.
 If programmer is writing an inner class then it can be declared with any of the four access level.
-The outer class should always be declared with public or package level access i.e default access.
+The outer class should always be declared with public access level or package access level (default access level).
 
 Constructor of a class can have any of the four access levels.
-If the class is having default constructor, then such constructor will have same access level as that of its class.
+If a class has compiler defined default constructor, then such constructor will have same access level as that of its class.
 
 While overriding, the subclass should retain the same access level as that of the superclass.
-Method and subclasses can be declared with stronger access level than that of the superclass but not weaker access level than that of the superclass.
+Method and subclasses can be declared with stronger access level than that of the superclass but not with weaker access level than that of the superclass.
 
 
 #### What is the need to override toString() method?
 
 In Object class, the toString() method is implemented to return a string which represents the fully qualified class name and address of the object created.
-It's return type is String. It is decalred using public access specifier and it does not take any arguments
+It's return type is String. It is decalred using public access specifier and it does not take any arguments.
 Purpose of toSring() method is to show the state of an object. Programmer can override the toString() method to return or print relevant properties or data members useful for the end user.
 
 
@@ -369,10 +369,10 @@ Purpose of toSring() method is to show the state of an object. Programmer can ov
 
 hashCode() method is declared in java.lang.Object class.
 It's return type is int. It is declared using public access specifier and it does not take any argument.
-The default implementation of hashCode() method processes the memory address of an object to an integer value.
+The default implementation of hashCode() method converts the memory address of an object to an integer value.
 
 equals() method is also declared in java.lang.Object class.
-It's return type is boolean. It is declared using public access specifier and it takes one Object type argument.
+It's return type is boolean. It is declared using public access specifier and it takes one object type argument.
 The default implementation of equals() method is used to make equal comparision between two objects. Internally equals() method calls the hashCode() method.
 If the hash value of two objects are same then equals() method returns true otherwise it returns false.
 
@@ -404,16 +404,16 @@ In string class toString(), hashCode() and equals() methods are overridden. Wher
 4. Comparable interface
 String class implements comparable interface, hence its objects can be sorted. Whereas String buffer and String builder classes do not implement Comparable interface. Hence their objects cannot be sorted.
 
-5. Methods Synchronized
+5. Methods synchronized
 String buffer class has synchronized methods. Where as String class and String builder class do not have synchronized methods.
 
 6. Thread safe
-String buffer class is thread safe. Whereas String and String builder class are not thread safe.
+String builder class is not thread safe. Where as String and String buffer class are thread safe.
 
 
 #### Why is String class immutable? Explain?
 
-Java uses the concept of String literal. Suppose there are five reference variables of String type, all reffering to one String object "Sachin". If one reference variable changes the object "Sachin", this change will be reflected accross all reference variables. This is not desirable. That is why String class has been kept immutable in Java.
+Java uses the concept of String literals to create objects. If different string objects have same string literal value, then JVM will not create new String object each time, instead all reference variables will refer to one object with that literal value. Suppose there are five reference variables of String type, all reffering to one String object "Sachin". And, if one reference variable changes the object "Sachin" to "Sachin Tendulkar", this change will be reflected accross all reference variables. Since, this is not the desirable behavior, so String class has been kept immutable in Java.
 
 
 #### What is String pool area?
@@ -425,11 +425,11 @@ This area is divided into two types, Constant pool area and Non-constant pool ar
 Constant pool are doesn't allow duplicate string objects to be stored seperately in the memory.
 Whereas, Non-constant pool area allows duplicate string objects to be stored in the memory.
 
-String object created using new operator will always be stored in non-constant pool area.
-Where as string objects created without using new operator will be stored in constant pool area.
+String object created using the new operator will always be stored in non-constant pool area.
+Whereas string objects created without using new operator will be stored in constant pool area.
 
 In constant pool area, different reference variables with same string literal value will point to the same String object.
-Whereas, in non-constant pool area, different references with same string literal value will not necessarily point to the same string object.
+Whereas, in non-constant pool area, different references with same string literal value can point to different string objects.
 
 For example, let us make four string objects:
 
@@ -461,9 +461,12 @@ In compile-time polymorphism, depending on the parameters used, the method decla
 
 In run-time polymorphism, depending on the class instance created at run-time, the method declaration is binded to its definition by JVM. This type of binding is also known as late binding or dynamic binding because once a method declaration is binded to its definition, it can be re-binded to different definition later during run-time.
 
-To achieve compile-time polymorphism, we can overload methods, or declare methods as static, or declare methods as final.
+To achieve compile-time polymorphism,
+1. overload methods or,
+2. declare methods as static or,
+3. declare methods as final
 
-To achieve run-time polymorphism, following conditions need to be satisfied:
+To achieve run-time polymorphism, following three conditions need to be satisfied:
 1. Inheritance
 2. Method overriding
 3. Type casting 
@@ -489,11 +492,11 @@ Widening can be done explicitly or implicitly. If compiler performs widening ope
 
 Narrowing:
 Casting higher order datatype to lower order datatype is called Narrowing.
-Narrowing cannot be done implicitly by compiler. Hence, narrowing operation must be done explicitly by programmer only. When narrowing operation is performed, data loss wil occur.
+Narrowing cannot be done implicitly by compiler. Hence, narrowing operation must be done explicitly by programmer only. When narrowing operation is performed, data loss will occur.
 
 
 In Class type casting, one class type object is casted to another class type object.
-Class type casting can be of two types:
+Class type casting is of two types:
 
 1. Upcasting
 2. Downcasting
@@ -501,24 +504,22 @@ Class type casting can be of two types:
 Class type casting can only be done if there is an IS-A relation between two classes. That is, one class extends the other class.
 
 Upcasting:
-Casting subclass type object to superclass type object is known as upcasting.
-Upcasting can be done either implicitly by compiler ot explicitly by programmer.
+Casting a class type object to its superclass type object is known as upcasting.
+Upcasting can be done either implicitly by compiler or explicitly by programmer.
 
 Downcasting:
-Casting superclass type object to subclass type object is known as downcasting.
+Casting a class type object to its subclass type object is known as downcasting.
 Downcasting cannot be done implicitly by compiler. Hence downcasting operation must be done explicitly by programmer only.
 Downcasting operation must only be performed on an upcasted object, because the object being downcasted to subclass type should have the relevant class properties of the subclass type. And this is only possible if downcasting operation is being performed on a previously upcasted subclass object.
 
-There is no data loss in class type casting. Class specific properties may become inaccessible but they are still not removed from the object stored in memory.
+There is no data loss in class type casting. Class specific properties may become inaccessible but they are not removed from the object stored in memory.
 
 
 #### When does JVM throw ClassCastException? Explain why.
 
-ClassCastException is a run-time exception thrown by JVM while performing class casting.
-
-When casting operation is performed on an object, that does not have relevant properties of the class type it is being casted to, then JVM throws ClassCastException.
-
-ClassCastException can be avoided by using the "instanceof" operator. Using instanceof operator, we can first check whether the object that is being casted from one class type to another class type has the relevant properties of the class type it is being casted to. If so, then the instanceof operator returns true, else it returns false.
+ClassCastException is a run-time exception thrown by JVM while performing class type casting.
+When casting operation is performed on an object which does not have relevant properties of the class type it is being casted to, then JVM throws ClassCastException.
+ClassCastException can be avoided by using the "instanceof" operator. By using the instanceof operator, we can first check whether the object that is being casted from one class type to another class type has the relevant properties of the class type it is being casted to. If so, then the instanceof operator returns true, else it returns false.
 
 
 #### What is generalization? Explain what it means.
